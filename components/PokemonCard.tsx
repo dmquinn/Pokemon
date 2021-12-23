@@ -4,7 +4,7 @@ import React from "react";
 
 export const PokemonCard = (props: any) => {
   const { items } = props;
-  console.log(items);
+  console.log("props", items);
   const imageIndex = items.url.split("mon/").pop().replace("/", "");
   return (
     <div>
