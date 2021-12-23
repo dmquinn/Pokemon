@@ -1,13 +1,32 @@
-import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import PokemonCard from "../components/PokemonCard";
 import PokemonList from "../components/PokemonList";
 import { getAllPokemons } from "./api/pokemonApi";
 interface Props {
-  pokemons: [{ name: string }];
+  pokemons: [{ name: any }];
 }
 const Home: React.FC<Props> = (props) => {
-  console.log(props.pokemons);
+  const [pageIndex, setPageIndex] = useState<number>(1);
+  //pokemon displayed on page at once:
+  const [currentPokemons, setCurrentPokemons] = useState<[]>([]);
+  const [fetchedPokemons, setFetchedPokemons] = useState<any>(props.pokemons);
+
+  const pokemonsPerPage = 16;
+  let newArr = [];
+  let newCurrent: any = [];
+  useEffect(() => {
+    newArr = [...fetchedPokemons];
+    newCurrent = newArr.slice(
+      pokemonsPerPage * (pageIndex - 1),
+      pokemonsPerPage * pageIndex
+    );
+
+    setCurrentPokemons(newCurrent);
+    {
+    }
+  }, [pageIndex, fetchedPokemons]);
+
   return (
     <div>
       <Head>
@@ -17,7 +36,16 @@ const Home: React.FC<Props> = (props) => {
       </Head>
       <div>
         <h1>Pokemon</h1>
-        <PokemonList items={props.pokemons} />
+        {fetchedPokemons && (
+          <PokemonList setPageIndex={setPageIndex} pageIndex={pageIndex}>
+            {currentPokemons.length &&
+              currentPokemons.map((pokemon, i) => {
+                return (
+                  <PokemonCard url={pokemon.url} name={pokemon.name} key={i} />
+                );
+              })}
+          </PokemonList>
+        )}
       </div>
     </div>
   );

@@ -1,42 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { PokemonCard } from "./PokemonCard";
+import React from "react";
 
 const PokemonList = (props: any) => {
-  const { url, name } = props;
-  const [pageIndex, setPageIndex] = useState<number>(1);
-  const [currentPokemons, setCurrentPokemons] = useState<[]>([]);
-  const [fetchedPokemons, setFetchedPokemons] = useState<[]>(props.items);
+  const { children, pageIndex, setPageIndex } = props;
 
-  const pokemonsPerPage = 16;
-  let newArr = [];
-  let newCurrent: any = [];
-  useEffect(() => {
-    newArr = [...fetchedPokemons];
-    newCurrent = newArr.slice(
-      pokemonsPerPage * (pageIndex - 1),
-      pokemonsPerPage * pageIndex
-    );
-    // console.log(
-    //   "numbers",
-    //   newArr.slice(
-    //     pokemonsPerPage * (pageIndex - 1),
-    //     pokemonsPerPage * pageIndex
-    //   )
-    // );
-    setCurrentPokemons(newCurrent);
-    {
-    }
-  }, [pageIndex, fetchedPokemons]);
   return (
-    <div>
-      {pageIndex !== 1 && (
-        <button onClick={() => setPageIndex(pageIndex + 1)}>Back</button>
-      )}
-      <button onClick={() => setPageIndex(pageIndex + 1)}>Next</button>{" "}
-      {currentPokemons.map((pokemon: any, i: any) => {
-        return <PokemonCard key={i} items={pokemon} />;
-      })}
-    </div>
+    <>
+      <div>
+        {pageIndex !== 1 && (
+          <button
+            className="bg-blue-500 py-2 px-4 rounded"
+            onClick={() => setPageIndex(pageIndex - 1)}
+          >
+            BACK
+          </button>
+        )}
+        <button
+          className="bg-red-500 text-white py-2 px-4 rounded"
+          onClick={() => setPageIndex(pageIndex + 1)}
+        >
+          NEXT
+        </button>
+      </div>
+      <div>{children}</div>
+    </>
   );
 };
 
