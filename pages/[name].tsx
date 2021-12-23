@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { getPokemon } from "./api/pokemonApi";
+import { PokemonType } from "../types";
 
 const PokemonDetailsPage = () => {
   const router = useRouter();
   const { name } = router.query;
 
-  const [pokemon, setPokemon] = useState<null>(null);
-  let moves: [] = [];
-  let types: [] = [];
+  const [pokemon, setPokemon] = useState<null | PokemonType>(null);
+  let moves = [];
+  let types = [];
   const getPoke = async () => {
-    //ts error due to router assuming string can be array?
+    //ts error due to router assuming string can be array
     const poke = await getPokemon(name);
     setPokemon(poke);
     console.log(poke);

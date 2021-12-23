@@ -1,6 +1,12 @@
 import React from "react";
 
-const PokemonList = (props: any) => {
+interface Props {
+  pageIndex: number;
+  setPageIndex: (pageIndex: number) => void;
+  children: React.ReactNode;
+}
+
+const PokemonList: React.FC<Props> = (props) => {
   const { children, pageIndex, setPageIndex } = props;
 
   return (
