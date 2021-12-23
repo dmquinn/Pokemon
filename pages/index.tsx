@@ -2,6 +2,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import PokemonCard from "../components/PokemonCard";
 import PokemonList from "../components/PokemonList";
+import Search from "../components/Search";
+
 import { getAllPokemons } from "./api/pokemonApi";
 interface Props {
   pokemons: [{ name: any }];
@@ -11,21 +13,23 @@ const Home: React.FC<Props> = (props) => {
   //pokemon displayed on page at once:
   const [currentPokemons, setCurrentPokemons] = useState<[]>([]);
   const [fetchedPokemons, setFetchedPokemons] = useState<any>(props.pokemons);
+  const [keywordArray, setKeywordArray] = useState<[]>([]);
 
   const pokemonsPerPage = 16;
   let newArr = [];
   let newCurrent: any = [];
   useEffect(() => {
-    newArr = [...fetchedPokemons];
-    newCurrent = newArr.slice(
-      pokemonsPerPage * (pageIndex - 1),
-      pokemonsPerPage * pageIndex
-    );
-
-    setCurrentPokemons(newCurrent);
     {
+      newArr = [...fetchedPokemons];
+      newCurrent = newArr.slice(
+        pokemonsPerPage * (pageIndex - 1),
+        pokemonsPerPage * pageIndex
+      );
+      keywordArray.length > 0
+        ? setCurrentPokemons(keywordArray)
+        : setCurrentPokemons(newCurrent);
     }
-  }, [pageIndex, fetchedPokemons]);
+  }, [pageIndex, keywordArray]);
 
   return (
     <div>
@@ -39,6 +43,10 @@ const Home: React.FC<Props> = (props) => {
       </Head>
       <div>
         <h1>Pokemon</h1>
+        <Search
+          setKeywordArray={setKeywordArray}
+          fetchedPokemons={fetchedPokemons}
+        />{" "}
         {fetchedPokemons && (
           <PokemonList setPageIndex={setPageIndex} pageIndex={pageIndex}>
             {currentPokemons.length &&

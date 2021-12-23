@@ -23,7 +23,7 @@ const PokemonCard: React.FC<Props> = (props) => {
 
   return (
     <Link href={singlePokemon} passHref>
-      <div className="hover:bg-blue-300 rounded-lg shadow-lg text-center cursor-pointer ">
+      <div className="hover:bg-blue-300 transition rounded-lg shadow-lg text-center cursor-pointer ">
         <Image
           //these images look better and load quicker than previous png img
           src={
