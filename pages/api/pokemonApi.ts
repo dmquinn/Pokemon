@@ -4,7 +4,6 @@ export const getAllPokemons = async () => {
   const res = await fetch(url); 
   try{
   const data = await res.json(); 
-    console.log(data.results)
 
   return data.results;
   }

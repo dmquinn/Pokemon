@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import PokemonList from "../components/PokemonList";
 import { getAllPokemons } from "./api/pokemonApi";
 interface Props {
   pokemons: [{ name: string }];
@@ -16,10 +17,7 @@ const Home: React.FC<Props> = (props) => {
       </Head>
       <div>
         <h1>Pokemon</h1>
-        {!!props.pokemons &&
-          props.pokemons.map((pokemon, i) => {
-            return <p key={i}>{pokemon.name}</p>;
-          })}
+        <PokemonList items={props.pokemons} />
       </div>
     </div>
   );
