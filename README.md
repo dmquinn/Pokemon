@@ -44,4 +44,3 @@
       <li>Typescript still throws a couple of minor errors - for example when using router.query.</li>
         <li>Fetching all pokemon at once still seems inefficient, but time limit meant this was the most straightforward way to implement all desired features</li>
   </ul> 
->>>>>>> 179fb25fc5c1640859219a9e32fdd80feb282a38
