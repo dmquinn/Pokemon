@@ -13,6 +13,8 @@ const PokemonDetailsPage = () => {
   let types = [];
   const getPoke = async () => {
     //ts error due to router assuming string can be array
+    //@ts-expect-error
+
     const poke = await getPokemon(name);
     setPokemon(poke);
     console.log(poke);
@@ -43,6 +45,8 @@ const PokemonDetailsPage = () => {
               width="200"
               height="200"
               objectFit="contain"
+              //@ts-expect-error
+
               alt={name}
               src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
             />
