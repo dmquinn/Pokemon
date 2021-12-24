@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+img {
+  filter: drop-shadow(13px 3px 5px #12121442);
+  opacity: 1;
+  animation: fade 1s linear;
+}
+
+h1 {
+  @apply font-bold p-2;
+}
+h2 {
+  @apply p-3 bg-blue-200 rounded-lg;
+}
+input {
+  @apply border-2 mt-5 mb-5 p-2;
+}
+img {
+  overflow: visible !important;
+}
+ul {
+  @apply p-6;
+}
+li {
+  @apply border p-1 rounded-lg shadow;
+}
+.movesCard {
+  @apply shadow-lg rounded-lg;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
