@@ -1,5 +1,8 @@
 
 <h3>PokeApi App</h3>
+
+<p>Take a look at the deployed app <a href="https://pokemon-sandy.vercel.app/" target="_blank">here</a></p>
+</br>
 <h5>This app is a technical challenge for a prospective employer</h5>
 <h5>The aim was to use the pokeApi to</h5>
 <ul>
@@ -16,7 +19,6 @@
 </ul>
 
 <h5>The brief also required pagination - showing no more than 16 pokemon at once, and an option for a user search input which I chose to implement</h5>
-<p>Take a look at the deployed app <a href="https://pokemon-sandy.vercel.app/" target="_blank">here</a></p>
 </br>
 <h3>Technologies used</h3>
 <ul>
