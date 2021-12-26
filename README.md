@@ -47,3 +47,14 @@
       <li>Typescript still throws a couple of minor errors - for example when using router.query.</li>
         <li>Fetching all pokemon at once still seems inefficient, but time limit meant this was the most straightforward way to implement all desired features</li>
   </ul> 
+<h3>Afterthought:</h3>
+<p>One very simple and obvious thing which has been overlooked is that the user search is case sensitive, meaning if a user searches "Pikachu", instead of "pikachu", no results will appear.  This is very easily solved by converting the user input to lower case in the search component, i.e. </p>
+
+ ```
+ fetchedPokemons.map((pokemon, i) => {
+              pokemon.name.includes(e.target.value.toLowerCase()) &&
+                !pokemon.name.includes("-") &&
+                newArray.push(pokemon);
+```
+
+<p>This along with other bugs and issues will be fixed only after initial code review</p>
